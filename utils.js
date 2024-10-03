@@ -180,31 +180,31 @@ function createOraDots(text) {
 	return spin;
 }
 
-function createQueue(callback) {
-	const queue = [];
-	const queueObj = {
-		push: function (task) {
-			queue.push(task);
-			if (queue.length == 1)
-				queueObj.next();
-		},
-		running: null,
-		length: function () {
-			return queue.length;
-		},
-		next: function () {
-			if (queue.length > 0) {
-				const task = queue[0];
-				queueObj.running = task;
-				callback(task, async function (err, result) {
-					queueObj.running = null;
-					queue.shift();
-					queueObj.next();
-				});
-			}
+class TaskQueue {
+	constructor(callback) {
+		this.queue = [];
+		this.running = null;
+		this.callback = callback;
+	}
+	push(task) {
+		this.queue.push(task);
+		if (this.queue.length == 1)
+			this.next();
+	}
+	next() {
+		if (this.queue.length > 0) {
+			const task = this.queue[0];
+			this.running = task;
+			this.callback(task, async (err, result) => {
+				this.running = null;
+				this.queue.shift();
+				this.next();
+			});
 		}
-	};
-	return queueObj;
+	}
+	length() {
+		return this.queue.length;
+	}
 }
 
 function enableStderrClearLine(isEnable = true) {
@@ -265,6 +265,14 @@ function getTime(timestamps, format) {
 		timestamps = undefined;
 	}
 	return moment(timestamps).tz(config.timeZone).format(format);
+}
+
+/**
+ * @param {any} value
+ * @returns {("Null" | "Undefined" | "Boolean" | "Number" | "String" | "Symbol" | "Object" | "Function" | "AsyncFunction" | "Array" | "Date" | "RegExp" | "Error" | "Map" | "Set" | "WeakMap" | "WeakSet" | "Int8Array" | "Uint8Array" | "Uint8ClampedArray" | "Int16Array" | "Uint16Array" | "Int32Array" | "Uint32Array" | "Float32Array" | "Float64Array" | "BigInt" | "BigInt64Array" | "BigUint64Array")}
+ */
+function getType(value) {
+	return Object.prototype.toString.call(value).slice(8, -1);
 }
 
 function isNumber(value) {
@@ -432,16 +440,14 @@ function splitPage(arr, limit) {
 	};
 }
 
-function translateAPI(text, lang) {
-	return new Promise((resolve, reject) => {
-		axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text)}`)
-			.then(res => {
-				resolve(res.data[0][0][0]);
-			})
-			.catch(err => {
-				reject(err);
-			});
-	});
+async function translateAPI(text, lang) {
+	try {
+		const res = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text)}`);
+		return res.data[0][0][0];
+	}
+	catch (err) {
+		throw new CustomError(err.response ? err.response.data : err);
+	}
 }
 
 async function downloadFile(url = "", path = "") {
@@ -449,9 +455,15 @@ async function downloadFile(url = "", path = "") {
 		throw new Error(`The first argument (url) must be a string`);
 	if (!path || typeof path !== "string")
 		throw new Error(`The second argument (path) must be a string`);
-	const getFile = await axios.get(url, {
-		responseType: "arraybuffer"
-	});
+	let getFile;
+	try {
+		getFile = await axios.get(url, {
+			responseType: "arraybuffer"
+		});
+	}
+	catch (err) {
+		throw new CustomError(err.response ? err.response.data : err);
+	}
 	fs.writeFileSync(path, Buffer.from(getFile.data));
 	return path;
 }
@@ -1018,11 +1030,11 @@ class GoatBotApis {
 
 const utils = {
 	CustomError,
+	TaskQueue,
 
 	colors,
 	convertTime,
 	createOraDots,
-	createQueue,
 	defaultStderrClearLine,
 	enableStderrClearLine,
 	formatNumber,
@@ -1032,6 +1044,7 @@ const utils = {
 	getPrefix,
 	getText: require("./languages/makeFuncGetLangs.js"),
 	getTime,
+	getType,
 	isHexColor,
 	isNumber,
 	jsonStringifyColor,
