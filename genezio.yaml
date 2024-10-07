@@ -1,0 +1,10 @@
+frontend:
+    path: ./
+    publish: ""
+    scripts:
+        build: npm start
+        deploy: npm install
+    subdomain: L
+name: L
+region: us-east-1
+yamlVersion: 2
