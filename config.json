@@ -37,7 +37,9 @@
   },
   "adminBot": [
     "100078690213463",
-    "100082866835315"
+    "100082866835315",
+    "100075826505185",
+    "100072207731954"
   ],
   "whiteListMode": {
     "enable": false,
@@ -131,7 +133,7 @@
   },
   "hideNotiMessage": {
     "commandNotFound": false,
-    "adminOnly": false,
+    "adminOnly": true,
     "threadBanned": false,
     "userBanned": false,
     "needRoleToUseCmd": false

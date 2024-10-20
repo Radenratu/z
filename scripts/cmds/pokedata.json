@@ -1,0 +1,89 @@
+[
+  {
+    "Nama": "Weedle",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 1
+  },
+  {
+    "Nama": "Yanmega",
+    "Rarity": "Uncommon",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 2
+  },
+  {
+    "Nama": "Grotle",
+    "Rarity": "Uncommon",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 3
+  },
+  {
+    "Nama": "Weedle",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "100088085177610",
+    "Page": 1
+  },
+  {
+    "Nama": "Caterpie",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "61566784606799",
+    "Page": 1
+  },
+  {
+    "Nama": "Deoxys δ",
+    "Rarity": "Rare",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 4
+  },
+  {
+    "Nama": "Seedot",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "61560876635706",
+    "Page": 1
+  },
+  {
+    "Nama": "Roselia",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 5
+  },
+  {
+    "Nama": "Kricketot",
+    "Rarity": "Common",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 6
+  },
+  {
+    "Nama": "Caterpie",
+    "Rarity": "Common",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Tackle: 10 damage",
+    "Defense": "60 HP",
+    "Username": "Unknown",
+    "Uid": "100069049280266",
+    "Page": 1,
+    "Image": "https://images.pokemontcg.io/sm115/1_hires.png"
+  },
+  {
+    "Nama": "Paras",
+    "Rarity": "Common",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Scratch: 10 damage\n• Slash: 20 damage",
+    "Defense": "70 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 7,
+    "Image": "https://images.pokemontcg.io/sm115/4_hires.png"
+  }
+]
