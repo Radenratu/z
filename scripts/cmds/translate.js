@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
   config: {
     name: "translate",
-    aliases: ["tr"],
+    aliases: ["tr", "trans"],
     version: "1",
     author: "Edinst",
     countDown: 5,
@@ -11,15 +11,11 @@ module.exports = {
     description: { en: "Terjemahkan teks dari satu bahasa ke bahasa lain" },
     category: "utilitas",
     guide: {
-      id: {
+      en: {
         usage: "{pn} (bahasa) (teks)",
         example: "{pn} id Halo, dunia!"
       }
     }
-  },
-
-  langs: {
-    id: {}
   },
 
   onStart: async function ({ message, event }) {
@@ -32,10 +28,12 @@ module.exports = {
     const text = args.slice(2).join(" ");
 
     try {
-      const response = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text)}`);
-      const translation = response.data.sentences[0].trans;
+     const c = await global.utils.translateAPI(text, lang);
+const axios = require('axios');
+const res = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${text}`);
+    const l = res.data[2];
 
-      return message.reply(`Teks terjemahan: ${translation}`);
+      return message.reply(`Teks terjemahan:\n${c}\n\n(${l} > ${lang})`);
     } catch (error) {
       return message.reply("Error terjemahan teks!");
     }

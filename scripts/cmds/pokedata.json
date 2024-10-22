@@ -1,24 +1,10 @@
 [
   {
-    "Nama": "Weedle",
-    "Rarity": "Common",
-    "Username": "Unknown",
-    "Uid": "100078690213463",
-    "Page": 1
-  },
-  {
-    "Nama": "Yanmega",
-    "Rarity": "Uncommon",
-    "Username": "Unknown",
-    "Uid": "100078690213463",
-    "Page": 2
-  },
-  {
     "Nama": "Grotle",
     "Rarity": "Uncommon",
     "Username": "Unknown",
     "Uid": "100078690213463",
-    "Page": 3
+    "Page": 1
   },
   {
     "Nama": "Weedle",
@@ -39,7 +25,7 @@
     "Rarity": "Rare",
     "Username": "Unknown",
     "Uid": "100078690213463",
-    "Page": 4
+    "Page": 2
   },
   {
     "Nama": "Seedot",
@@ -53,14 +39,14 @@
     "Rarity": "Common",
     "Username": "Unknown",
     "Uid": "100078690213463",
-    "Page": 5
+    "Page": 3
   },
   {
     "Nama": "Kricketot",
     "Rarity": "Common",
     "Username": "Unknown",
     "Uid": "100078690213463",
-    "Page": 6
+    "Page": 4
   },
   {
     "Nama": "Caterpie",
@@ -75,6 +61,30 @@
     "Image": "https://images.pokemontcg.io/sm115/1_hires.png"
   },
   {
+    "Nama": "Burmy",
+    "Rarity": "Common",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Hang Down: 10 damage",
+    "Defense": "60 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 5,
+    "Image": "https://images.pokemontcg.io/xy10/2_hires.png"
+  },
+  {
+    "Nama": "Charmander",
+    "Rarity": "Common",
+    "Type": "Fire",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Reckless Charge: 20 damage",
+    "Defense": "60 HP",
+    "Username": "Unknown",
+    "Uid": "61566784606799",
+    "Page": 2,
+    "Image": "https://images.pokemontcg.io/det1/4_hires.png"
+  },
+  {
     "Nama": "Paras",
     "Rarity": "Common",
     "Type": "Grass",
@@ -83,7 +93,79 @@
     "Defense": "70 HP",
     "Username": "Unknown",
     "Uid": "100078690213463",
-    "Page": 7,
+    "Page": 6,
     "Image": "https://images.pokemontcg.io/sm115/4_hires.png"
+  },
+  {
+    "Nama": "Gloom",
+    "Rarity": "Uncommon",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Drool: 20 damage",
+    "Defense": "80 HP",
+    "Username": "Unknown",
+    "Uid": "100077189322803",
+    "Page": 1,
+    "Image": "https://images.pokemontcg.io/xy7/2_hires.png"
+  },
+  {
+    "Nama": "Weepinbell",
+    "Rarity": "Uncommon",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Muddy Acid: 40 damage",
+    "Defense": "80 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 7,
+    "Image": "https://images.pokemontcg.io/sm2/2_hires.png"
+  },
+  {
+    "Nama": "Tangela",
+    "Rarity": "Common",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Slam: 30× damage\n• Mega Drain: 40 damage",
+    "Defense": "80 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 8,
+    "Image": "https://images.pokemontcg.io/xy11/1_hires.png"
+  },
+  {
+    "Nama": "Oddish",
+    "Rarity": "Common",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Trip Over: 10+ damage",
+    "Defense": "50 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 9,
+    "Image": "https://images.pokemontcg.io/xy7/1_hires.png"
+  },
+  {
+    "Nama": "Charizard",
+    "Rarity": "Rare Ultra",
+    "Type": "Fire",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Slash: 70 damage\n• Wild Tackle: 180 damage",
+    "Defense": "180 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 10,
+    "Image": "https://images.pokemontcg.io/det1/5_hires.png"
+  },
+  {
+    "Nama": "Lileep",
+    "Rarity": "Uncommon",
+    "Type": "Grass",
+    "Deskripsi": "Deskripsi tidak tersedia.",
+    "Attack": "• Spiral Drain: 20 damage",
+    "Defense": "80 HP",
+    "Username": "Unknown",
+    "Uid": "100078690213463",
+    "Page": 11,
+    "Image": "https://images.pokemontcg.io/bw10/3_hires.png"
   }
 ]
