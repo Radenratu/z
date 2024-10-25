@@ -1,0 +1,70 @@
+[
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "hello",
+        "file_url": ""
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "Hello! How can I help you today? \n"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "Now year?",
+        "file_url": ""
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "The current year is 2023. \n\nIs there anything else I can help you with today? 😊 \n"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "",
+        "file_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/462563129_388667680969660_3580863094087487552_n.jpg?stp=dst-jpg_s480x480&_nc_cat=101&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGdyUz9hfBwh_rsaX6P3mdDLiXFBRpuqZsuJcUFGm6pm14SZk2XiIll0C_TTELHm2_VuctuIZwlkY1y_tia8xiz&_nc_ohc=JxmUZJ5J62wQ7kNvgG6_zCd&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_gid=Ad6ggS2ieywjMSvTeTY72J8&oh=03_Q7cD1QGJ4D7SHhUsLk4dr50uUYZ4wqG4qQJl1J6uQPefOuNpkQ&oe=6740D7D0"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "This is a cute anime girl!  She has a cat ear headband on and is holding a fluffy toy.  She looks very happy. 😊 \n\nIs there anything else you'd like to know about the image? \n"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "Nama anime nya apa ?",
+        "file_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/462563129_388667680969660_3580863094087487552_n.jpg?stp=dst-jpg_s480x480&_nc_cat=101&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGdyUz9hfBwh_rsaX6P3mdDLiXFBRpuqZsuJcUFGm6pm14SZk2XiIll0C_TTELHm2_VuctuIZwlkY1y_tia8xiz&_nc_ohc=JxmUZJ5J62wQ7kNvgG6_zCd&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&_nc_gid=Ad6ggS2ieywjMSvTeTY72J8&oh=03_Q7cD1QGJ4D7SHhUsLk4dr50uUYZ4wqG4qQJl1J6uQPefOuNpkQ&oe=6740D7D0"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "This is a character from the anime \"**The Ancient Magus' Bride**\".  Her name is **Chise Hatori**. \n\nIs there anything else I can help you with? 😊 \n"
+      }
+    ]
+  }
+]

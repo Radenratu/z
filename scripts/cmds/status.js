@@ -51,7 +51,7 @@ module.exports = {
 
       const userName = nickData.find(data => data.uid === event.senderID)?.Nickname || userData.name;
 
-      const money = userData.money;
+      const money = userData.money.toFixed(2);
       const exp = userData.exp;
       let level = 1;
       let nextLevelExp = 100;

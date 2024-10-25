@@ -11,6 +11,7 @@ module.exports = {
     description: { en: "Mencari gambar" },
     guide: { 
         en: "{pn} (nama gambar) - (jumlah gambar)"
+    },
     category: "tools"
   },
 

@@ -34,12 +34,13 @@ module.exports = {
 │⁃❯ (Game)
 ├───────
 │› mine, spin
-│› pokemon, │fishing
+│› pokemon
+│› fishing
 ├───────
 │⁃❯ (Ekonomi)
 ├───────
 │› status, pay
-│› whois
+│› whois, freegift
 ├───────
 │⁃❯ (Alat)
 ├───────

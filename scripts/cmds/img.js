@@ -1,74 +1,88 @@
 const axios = require('axios');
-const regCheckURL = /^(https?|ftp):\/\/[^\s]+$/;
+const stream = require('stream');
+const { promisify } = require('util');
+const pipeline = promisify(stream.pipeline);
 
 module.exports = {
   config: {
-    name: "imgbb",
-    aliases: ["img"],
-    version: "1",
+    name: "img",
+    aliases: ["gambar"],
+    version: "1.0.0",
     author: "Edinst",
     countDown: 5,
     role: 0,
-    description: { en: "upload image to imgbb" },
-    category: "utility",
-    guide: {
-      en: {
-        usage: "{pn} (reply to image)"
-      }
-    }
+    description: {
+      en: "Mencari dan mengambil gambar tanpa memerlukan API key."
+    },
+    category: "Image"
   },
 
-  onStart: async function ({ api, event }) {
-    const linkanh = event.messageReply?.attachments[0]?.url;
-    if (!linkanh) {
-      return api.sendMessage('Please reply to an image.', event.threadID, event.messageID);
+  onStart: async function ({ message, api, event }) {
+    const args = event.body.trim().split(/ +/).slice(1);
+    if (args.length === 0) {
+      return api.sendMessage("❗ Mohon berikan kata kunci pencarian.\n\nPenggunaan: `.img [nama gambar] -[jumlah gambar (max 5)]`", event.threadID, event.messageID);
     }
 
-    let type = "file";
-  let file = await global.utils.getStreamFromURL(linkanh);
-
-    if (!file)
-      throw new Error('The first argument (file) must be a stream or a image url');
-    if (regCheckURL.test(file) == true)
-      type = "url";
-    if (
-      (type != "url" && (!(typeof file._read === 'function' && typeof file._readableState === 'object')))
-      || (type == "url" && !regCheckURL.test(file))
-    )
-      throw new Error('The first argument (file) must be a stream or an image URL');
-
-    axios({
-      method: 'GET',
-      url: 'https://imgbb.com'
-    })
-    .then(res => {
-      const auth_token = res.data.match(/auth_token="([^"]+)"/)[1];
-      const timestamp = Date.now();
-
-      axios({
-        method: 'POST',
-        url: 'https://imgbb.com/json',
-        headers: {
-          "content-type": "multipart/form-data"
-        },
-        data: {
-          source: file,
-          type: type,
-          action: 'upload',
-          timestamp: timestamp,
-          auth_token: auth_token
+    let query = [];
+    let number = 1;
+    args.forEach(arg => {
+      if (arg.startsWith('-')) {
+        const num = parseInt(arg.slice(1));
+        if (!isNaN(num) && num > 0 && num <= 5) {
+          number = num;
         }
-      })
-      .then(res => {
-        const imageUrl = res.data.image.url;
-        return api.sendMessage({ body: imageUrl }, event.threadID, event.messageID);
-      })
-      .catch(err => {
-        throw new Error(err.response ? err.response.data : err);
-      });
-    })
-    .catch(err => {
-      throw new Error(err.response ? err.response.data : err);
+      } else {
+        query.push(arg);
+      }
     });
+
+    const searchQuery = query.join(' ');
+    if (!searchQuery) {
+      return api.sendMessage("❗ Mohon berikan kata kunci pencarian yang valid.\n\nPenggunaan: `.img [nama gambar] -[jumlah gambar (max 5)]`", event.threadID, event.messageID);
+    }
+
+    api.sendMessage(`🔍 Mencari "${searchQuery}" dan mengambil ${number} gambar...`, event.threadID, event.messageID);
+
+    try {
+      const response = await axios.get('https://api.openverse.engineering/v1/images/', {
+        params: {
+          q: searchQuery,
+          page_size: number
+        },
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      const results = response.data.results;
+      if (!results || results.length === 0) {
+        return api.sendMessage("❗ Tidak ada gambar ditemukan untuk pencarian Anda.", event.threadID, event.messageID);
+      }
+
+      for (const img of results) {
+        const imgUrl = img.url;
+        if (imgUrl) {
+          api.sendMessage({
+            body: `📷 Gambar untuk "${searchQuery}"`,
+            attachment: await downloadImage(imgUrl)
+          }, event.threadID);
+        }
+      }
+
+    } catch (error) {
+      console.error(error);
+      api.sendMessage(`❗ Terjadi kesalahan saat mencari gambar. Silakan coba lagi nanti: ${error}`, event.threadID, event.messageID);
+    }
   }
 };
+
+async function downloadImage(url) {
+  const response = await axios({
+    method: 'GET',
+    url: url,
+    responseType: 'stream'
+  });
+  const passThrough = new stream.PassThrough();
+  pipeline(response.data, passThrough).catch(err => console.error(err));
+  return passThrough;
+}

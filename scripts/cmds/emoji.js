@@ -1,17 +1,13 @@
 const axios = require('axios');
-const axiosRetry = require('axios-retry');
-const Jimp = require('jimp');
-
-// Konfigurasi axios-retry untuk mencoba ulang permintaan HTTP jika gagal
-axiosRetry(axios, {
-  retries: 3, // Jumlah percobaan ulang
-  retryDelay: axiosRetry.exponentialDelay, // Delay antar percobaan menggunakan eksponensial
-  retryCondition: (error) => {
-    // Retry hanya untuk error jaringan atau status kode 5xx
-    return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.response.status >= 500;
+const { retry } = require('axios-retry');
+const Jimp = require("jimp")
+axios.create({
+  retry: 3,
+  retryDelay: axios.exponentialDelay,
+  shouldRetry: (error) => {
+    return axios.isNetworkOrIdempotentRequestError(error) || error.response.status >= 500;
   },
 });
-
 module.exports = {
   config: {
     name: "emojimix",
@@ -73,8 +69,8 @@ module.exports = {
       }
 
       // Baca gambar menggunakan Jimp
-      const image1 = await Jimp.read(response1.data);
-      const image2 = await Jimp.read(response2.data);
+      const image1 = await new Jimp(response1.data);
+      const image2 = await new Jimp(response2.data);
 
       // Tentukan ukuran kanvas berdasarkan ukuran emoji
       const width = Math.max(image1.bitmap.width, image2.bitmap.width);

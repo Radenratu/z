@@ -25,6 +25,9 @@
     },
     "dhbc": {
       "reward": 1000
+    },
+    "g": {
+      "geminiApiKey": "AIzaSyD8mKxqcjqj4m6szunVeSBnBxKr5pVUJx8"
     }
   },
   "envEvents": {
@@ -32,7 +35,5 @@
       "allow": true
     }
   },
-  "commandUnload": [
-    "free.js"
-  ]
+  "commandUnload": []
 }
